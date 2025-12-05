@@ -1,0 +1,22 @@
+name: Update Docker Hub Description
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'README.md'
+      - '.github/workflows/docker-hub-readme.yml'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/retro-synth
+          readme-filepath: ./README.md
