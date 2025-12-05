@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: retro-synth-dev
+  namespace: argocd
+spec:
+  project: default
+  
+  # Fonte: Git repository
+  source:
+    repoURL: https://github.com/rmnobarra/retro-synth
+    targetRevision: main
+    path: helm/retro-synth-chart
+    
+    # Helm specific
+    helm:
+      valueFiles:
+      - values-dev.yaml
+  
+  # Destino
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: retro-synth-dev
+  
+  # Sync policy manual
+  # syncPolicy:
+  #   syncOptions:
+  #   - CreateNamespace=true
+
+  # ADICIONADO: Sync automático
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
