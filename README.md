@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎹 Retro Synth
 
-## Getting Started
+> **"The Past is Loud."**
 
-First, run the development server:
+**Retro Synth** is a "Retro-Modern" virtual synthesizer and jukebox built with Next.js and Tone.js. It combines the nostalgic aesthetic of 80s hardware with the timeless genius of classical composers, all rendered in glorious 8-bit square waves.
 
+![Project Status](https://img.shields.io/badge/status-active-success.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+## ✨ Features
+
+-   **🎹 Fully Playable Keyboard:** A chromatic 8-bit piano (C4-C5) with responsive visual feedback.
+-   **🎼 Classical Jukebox Mode:** Sit back and listen to 8-bit renditions of:
+    -   *Ode to Joy* (Beethoven)
+    -   *Für Elise* (Beethoven)
+    -   *Eine Kleine Nachtmusik* (Mozart)
+    -   *Ride of the Valkyries* (Wagner)
+-   **👾 Retro Aesthetics:** CRT scanlines, neon glow effects, and a physical "chassis" design.
+-   **🐳 Docker Ready:** Includes a production-ready Dockerfile and Makefile.
+
+## 🛠️ Tech Stack
+
+-   **Framework:** Next.js 15 (App Router)
+-   **Language:** TypeScript
+-   **Audio Engine:** Tone.js
+-   **Styling:** Tailwind CSS & Shadcn/ui
+-   **Font:** Press Start 2P
+
+## 🚀 Getting Started
+
+### Local Development
+
+1.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+2.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+
+3.  Open [http://localhost:3000](http://localhost:3000).
+
+### 🐳 Docker
+
+We have included a `Makefile` to simplify Docker operations.
+
+**Build the image:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+make build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Run the container:**
+```bash
+make run
+```
+The app will be available at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Push to registry:**
+```bash
+make push REGISTRY=your-username
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎮 How to Use
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  **Start Audio:** Click any key on the keyboard first to initialize the Audio Context (browser policy requirement).
+2.  **Play:** Use your mouse to click the keys.
+3.  **Auto Mode:** Click the Green **Play** button on the dashboard to start the Classical Jukebox. The screen will display the current track title and composer.
