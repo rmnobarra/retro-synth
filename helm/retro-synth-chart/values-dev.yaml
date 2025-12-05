@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: rmnobarra/retro-synth
+  tag: "latest"
+
+service:
+  type: NodePort
+  nodePort: 30300
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
